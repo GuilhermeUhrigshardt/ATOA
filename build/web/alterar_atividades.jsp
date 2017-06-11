@@ -36,10 +36,10 @@
     </head>
     <body>
         <center>
-                <nav class="navbar navbar-inverse">
+                <nav class="navbar navbar-inverse" style="background-color: #494949;">
                     <div class="container-fluid">
                       <div class="navbar-header">
-                        <a class="navbar-brand" href="/ATOA/Atividades">AT-OA</a>
+                        <a class="navbar-brand" href="/ATOA/Atividades"><img src="/ATOA/css/logo2.png"style="width: 76%; margin: -0.5vh"></a>
                       </div>
                       <ul class="nav navbar-nav">
                         <li><a href="/ATOA/Atividades">Atividades</a></li>
