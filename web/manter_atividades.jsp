@@ -40,14 +40,16 @@
                         <li><a href="/ATOA/ManterRelatorios">Relatórios</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div style="margin-top: 2vh; color: #ccc;">
+                                Bem vindo, <c:out value="${sessionScope.funcionarioatoa.nomeFuncionario}"/><span style="float:right;"></span>
+                            </div>
+                        </li>
                         <li><a href="/ATOA/ProcessaLogout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                       </ul>
                     </div>
                   </nav>
-                  <div style="text-align:left;">
-                    Bem vindo, <c:out value="${sessionScope.funcionarioatoa.nomeFuncionario}"/><span style="float:right;"></span>
-                  </div>
-            <br/><br/><br/>
+                  <br/><br/><br/>
             <h3>Manter Atividades</h3>
             <br/>
             <c:choose>
