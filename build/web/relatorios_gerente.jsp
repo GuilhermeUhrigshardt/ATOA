@@ -47,17 +47,63 @@
                     Bem vindo, <c:out value="${sessionScope.funcionarioatoa.nomeFuncionario}"/><span style="float:right;"></span>
                   </div>
             <br/><br/><br/>
-            <h3>Relatórios</h3>
-            <br/><br/>
-            <select name="funcionario">
-                <c:forEach items="${listaFuncionario}" var="item">
-                    <option value="${item.idFuncionario}">${item.nomeFuncionario}</option>
-                </c:forEach>
-            </select>
+            <h1>Relatórios</h1>
             <br/>
-            <a href="ATOA/RelatorioFuncionario"><input value="Relatório por Funcionário"></a>
-            <br/><br/>
-            <a href="ATOA/RelatorioDepartamento"><input value="Relatório por Departamento"></a>
+            <div class="container " style="width: 28%">
+                <div align="center" class="form-group jumbotron">
+                    <h3>Funcionário</h3>
+                    <form action="Relatorios">
+                        <input type="hidden" name="rel" value="1">
+                        <label>Funcionário: </label>
+                        <select name="funcionario">
+                            <c:forEach items="${listaFuncionario}" var="f">
+                                <option value="${f.idFuncionario}">${f.nomeFuncionario}</option>
+                            </c:forEach>
+                        </select>
+                        <br/><br/>
+                        <input class="btn btn-primary" type="submit" value="Atividades">
+                    </form>
+                </div>
+                <div align="center" class="form-group jumbotron">
+                    <h3>Departamento</h3>
+                    <form action="Relatorios">
+                        <input type="hidden" name="rel" value="2">
+                        <label>Mês: </label>
+                        <select name="mes">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <label>Ano: </label>
+                        <select name="ano">
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="true">2017</option>
+                        </select>
+                        <br/><br/>
+                        <input class="btn btn-primary" type="submit" value="Atividades">
+                    </form>
+                </div>
+                <br/>
+            </div>
         </center>
     </body>
 </html>

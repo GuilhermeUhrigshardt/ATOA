@@ -40,6 +40,8 @@ public class ProcessaLogin extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
