@@ -40,6 +40,9 @@ public class AtividadeDAO {
     private String consolidarAtividade = "update Atividade set fim = curdate(), idEstado = 3 where idAtividade = ?";
     private String buscarAtividadePorDepartamentoEId = "select a.idAtividade, e.idEstado, e.nome, t.idTipoAtividade, t.nomeTipo, a.inicio, a.fim, a.descricao from Atividade a inner join Estado e on a.idEstado = e.idEstado inner join TipoAtividade t on a.idTipoAtividade = t.idTipoAtividade where a.idDepartamento = ? and e.idEstado = ? order by a.idAtividade";
     private String buscarTodas = "select a.idAtividade, e.idEstado, e.nome, t.idTipoAtividade, t.nomeTipo, a.idFuncionario, a.idDepartamento, a.inicio, a.fim, a.descricao from Atividade a inner join Estado e on a.idEstado = e.idEstado inner join TipoAtividade t on a.idTipoAtividade = t.idTipoAtividade order by a.idAtividade";
+    private String aviso = "select idAviso from Aviso where idDepartamento = ?";
+    private String deletaAviso = "delete from Aviso where idDepartamento = ?";
+    private String insereAviso = "insert into Aviso (idDepartamento) values (?)";
     
     public void cadastrarAtividade(Atividade atividade, Funcionario funcionario) throws SQLException, ClassNotFoundException {
         int idAtividade = 0;
@@ -311,5 +314,54 @@ public class AtividadeDAO {
             rs.close();
         }
         return lista;
+    }
+    
+    public boolean aviso(int id) throws SQLException, ClassNotFoundException {
+        try {
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement(aviso);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            if (rs.next())
+                return true;
+            return false;
+        } catch (SQLException ex) {
+            out.println("Erro ao cadastrar Atividade: " + ex.getMessage());
+        } finally {
+            stmt.close();
+            con.close();
+            rs.close();
+        }
+        return false;
+    }
+    
+    public void deletaAviso(int id) throws SQLException, ClassNotFoundException {
+        try {
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement(deletaAviso);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            out.println("Erro ao cadastrar Atividade: " + ex.getMessage());
+        } finally {
+            stmt.close();
+            con.close();
+            rs.close();
+        }
+    }
+    
+    public void insereAviso(int id) throws SQLException, ClassNotFoundException {
+        try {
+            con = ConnectionFactory.getConnection();
+            stmt = con.prepareStatement(insereAviso);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            out.println("Erro ao cadastrar Atividade: " + ex.getMessage());
+        } finally {
+            stmt.close();
+            con.close();
+            rs.close();
+        }
     }
 }

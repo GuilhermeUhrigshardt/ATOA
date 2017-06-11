@@ -6,10 +6,12 @@
 package Servlets;
 
 import Beans.Funcionario;
+import DAO.AtividadeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -39,7 +41,7 @@ public class ProcessaLogin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException, SQLException, ClassNotFoundException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
@@ -63,8 +65,14 @@ public class ProcessaLogin extends HttpServlet {
             session.setAttribute("funcionarioatoa", funcionario);
             session.setMaxInactiveInterval(20*60);
             RequestDispatcher rd = null;
-            if (funcionario.getCargo().getNomeCargo().equals("Gerente"))
+            if (funcionario.getCargo().getNomeCargo().equals("Gerente")) {
+                AtividadeDAO a = new AtividadeDAO();
+                if(a.aviso(funcionario.getDepartamento().getIdDepartamento())){
+                    request.setAttribute("msg", "Existem atividades em andamento que impediram o fechamento da folha de alguns funcionários deste departamento!");
+                    a.deletaAviso(funcionario.getDepartamento().getIdDepartamento());
+                }
                 rd = getServletContext().getRequestDispatcher("/manter_tipos_atividades.jsp");
+            }
             else
                 rd = getServletContext().getRequestDispatcher("/Atividades");
             rd.include(request, response);
@@ -87,6 +95,10 @@ public class ProcessaLogin extends HttpServlet {
             processRequest(request, response);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -104,6 +116,10 @@ public class ProcessaLogin extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProcessaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
