@@ -100,13 +100,13 @@
                             </tr>
                         </c:forEach>
                     </table>
-                    <a href="CadastrarAtividade"><input type="button" class="btn btn-warning" name="Cadastrar" value="Cadastrar" /></a>
+                    <a href="CadastrarAtividade"><input type="button" class="btn btn-warning" name="Cadastrar" value="Cadastrar" style="margin-bottom: 10vh;"/></a>
                 </div>
                 </c:when>
                 <c:otherwise>
                     <h4>Você ainda não possui atividades!</h4>
                     <br/><br/>
-                    <a href="CadastrarAtividade"><input type="button" class="btn btn-warning" name="Cadastrar" value="Cadastrar" /></a>
+                    <a href="CadastrarAtividade"><input type="button" class="btn btn-warning" name="Cadastrar" value="Cadastrar" style="margin-bottom: 10vh;"/></a>
                 </c:otherwise>
             </c:choose>
         </center>

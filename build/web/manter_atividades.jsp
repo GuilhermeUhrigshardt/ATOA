@@ -50,7 +50,7 @@
                     </div>
                   </nav>
                   <br/><br/><br/>
-            <h3>Manter Atividades</h3>
+            <h1>Manter Atividades</h1>
             <br/>
             <c:choose>
                 <c:when test="${!empty lista}">
@@ -82,12 +82,12 @@
                                 <td><fmt:setLocale value = "pt_BR"/><fmt:formatDate value="${item.inicio}" type="date"/></td>
                                 <td><fmt:setLocale value = "pt_BR"/><fmt:formatDate value="${item.fim}" type="date"/></td>
                                 <td>${item.estado}</td>
-                                <td><a href="ConsolidarAtividade?atv=<c:out value="${item.idAtividade}"/>&est=<c:out value="${item.idEstado}"/>"><input type="button" name="Consolidar" value="Aprovar" /></a></td>
-                                <td><a href="RecusarAtividade?atv=<c:out value="${item.idAtividade}"/>"><input type="button" name="Recusar" value="Recusar" /></a></td>
+                                <td><a href="ConsolidarAtividade?atv=<c:out value="${item.idAtividade}"/>&est=<c:out value="${item.idEstado}"/>"><input type="button" class="btn btn-warning" name="Consolidar" value="Aprovar" /></a></td>
+                                <td><a href="RecusarAtividade?atv=<c:out value="${item.idAtividade}"/>"><input type="button" name="Recusar" class="btn btn-warning" value="Recusar" /></a></td>
                             </tr>
                         </c:forEach>
                     </table>
-                    <a href="ConsolidarAtividade?atv=todas"><input type="button" name="Consolidar" value="Aprovar Todas" /></a>
+                    <a href="ConsolidarAtividade?atv=todas"><input type="button" class="btn btn-warning" name="Consolidar" value="Aprovar Todas" /></a>
                 </div>
                 </c:when>
                 <c:otherwise>
