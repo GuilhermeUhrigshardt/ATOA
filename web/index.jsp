@@ -18,7 +18,7 @@
             <h4>${msg}</h4>
             <div class="container " style="width: 36%">
                 <img src="css/logo1.png"> 
-                <form action="http://localhost:8080/ATOA/ProcessaLogin" method="post">
+                <form action="http://localhost:21836/ATOA/ProcessaLogin" method="post">
                     <div align="center" class="form-group jumbotron">
                         Email:<input class="form-control" type="text" name="email" id="email"><br/>
                         Senha:<input class="form-control" type="password" name="senha" id="senha"><br/>

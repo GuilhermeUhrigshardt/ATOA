@@ -54,7 +54,7 @@
             <div class="container " style="width: 28%">
                 <div align="center" class="form-group jumbotron">
                     <h3>Funcionário</h3>
-                    <form action="Relatorios">
+                    <form action="RelatorioFuncionario">
                         <input type="hidden" name="rel" value="1">
                         <label>Nome: </label>
                         <select class="form-control" name="funcionario">
@@ -63,47 +63,19 @@
                             </c:forEach>
                         </select>
                         <br/><br/>
-                        <input class="btn btn-warning" type="submit" value="Atividades">
+                        <input class="btn btn-warning" type="submit" value="Gerar">
                     </form>
                 </div>
                 <div align="center" class="form-group jumbotron">
                     <h3>Departamento</h3>
-                    <form action="Relatorios">
+                    <form action="RelatorioDepartamento">
                         <input type="hidden" name="rel" value="2">
                         <div style="flex-flow: row wrap; display: flex;">
-                            <label>Mês: </label>
-                            <select class="form-control" name="mes" style="width: 28%; margin-right: 1vw;">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                            <label>Ano: </label>
-                            <select class="form-control" name="ano" style="width: 36%">
-                                <option value="2006">2006</option>
-                                <option value="2007">2007</option>
-                                <option value="2008">2008</option>
-                                <option value="2009">2009</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017" selected="true">2017</option>
-                            </select>
+                            <label>Dia: </label>
+                            <input type="date" class="form-control" name="data">
                         </div>
                         <br/><br/>
-                        <input class="btn btn-warning" type="submit" value="Atividades">
+                        <input class="btn btn-warning" type="submit" value="Gerar">
                     </form>
                 </div>
                 <br/>
